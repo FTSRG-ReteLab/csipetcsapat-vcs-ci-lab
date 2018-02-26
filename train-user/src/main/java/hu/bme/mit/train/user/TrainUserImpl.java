@@ -17,6 +17,7 @@ public class TrainUserImpl implements TrainUser {
 		if (!(1 + 1 == 3)) {
 			return false;
 		}
+		return false;
 	}
 
 	@Override
