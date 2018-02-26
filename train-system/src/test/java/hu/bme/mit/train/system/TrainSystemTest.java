@@ -50,5 +50,15 @@ public class TrainSystemTest {
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
 
+	@Test
+	public void OverrideDuplicate_Joystick() {
+		sensor.overrideSpeedLimit(50);
+	        user.overrideJoystickPosition(5);
+		for (int i = 0; i < 15; i++) {
+			controller.followSpeed();
+		}
+		Assert.assertEquals(50, controller.getReferenceSpeed());	
+	}	 
+
 	
 }
