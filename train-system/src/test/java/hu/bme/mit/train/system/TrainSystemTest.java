@@ -8,12 +8,14 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
+import hu.bme.mit.train.system.Tachograph;
 
 public class TrainSystemTest {
 
 	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
+	Tachograph tachograph;
 	
 	@Before
 	public void before() {
@@ -21,6 +23,7 @@ public class TrainSystemTest {
 		controller = system.getController();
 		sensor = system.getSensor();
 		user = system.getUser();
+		tachograph = new Tachograph(controller, user);
 
 		sensor.overrideSpeedLimit(50);
 	}
@@ -59,6 +62,14 @@ public class TrainSystemTest {
 		}
 		Assert.assertEquals(50, controller.getReferenceSpeed());	
 	}	 
+
+	@Test
+	public void CheckGuavaTable() {
+		Assert.assertEquals(true, tachograph.isEmpty());
+		controller.followSpeed();
+		tachograph.update();
+		Assert.assertEquals(false, tachograph.isEmpty());
+	}
 
 	
 }
