@@ -10,7 +10,8 @@ public class TrainThread extends Thread {
 		this.controller = controller;
 		this.running = false;
 	}
-
+	
+	@Override
 	public void run() {
 		this.running = true;
 		while (this.running) {
@@ -18,6 +19,7 @@ public class TrainThread extends Thread {
 			try {
 				Thread.sleep(1500);
 			} catch(InterruptedException ex) {
+				Thread.currentThread().interrupt();
 				ex.printStackTrace();
 			}
 		}
