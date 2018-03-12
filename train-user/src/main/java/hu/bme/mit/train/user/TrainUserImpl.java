@@ -2,14 +2,18 @@ package hu.bme.mit.train.user;
 
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainUser;
+import hu.bme.mit.train.user.TrainThread;
 
 public class TrainUserImpl implements TrainUser {
 
 	private TrainController controller;
 	private int joystickPosition;
+	private Thread trainThread;
 
 	public TrainUserImpl(TrainController controller) {
 		this.controller = controller;
+		this.trainThread = new TrainThread(controller);
+		trainThread.start();
 	}
 
 	@Override
