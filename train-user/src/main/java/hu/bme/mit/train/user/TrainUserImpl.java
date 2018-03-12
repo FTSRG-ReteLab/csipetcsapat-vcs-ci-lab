@@ -1,6 +1,6 @@
 package hu.bme.mit.train.user;
 
-import java.util.concurrent.TimeUnit;
+import java.util.*;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainUser;
 
@@ -33,7 +33,7 @@ public class TrainUserImpl implements TrainUser {
 			this.joystickPosition+=i;
 			System.out.println("The position of the joystick: " + this.joystickPosition);
 			controller.setJoystickPosition(joystickPosition);
-			TimeUnit.SECONDS.sleep(1);
+			Thread.sleep(1000);
 		}
 	}
 
