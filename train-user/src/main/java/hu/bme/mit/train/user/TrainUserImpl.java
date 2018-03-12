@@ -33,7 +33,9 @@ public class TrainUserImpl implements TrainUser {
 			this.joystickPosition+=i;
 			System.out.println("The position of the joystick: " + this.joystickPosition);
 			controller.setJoystickPosition(joystickPosition);
-			Thread.sleep(1000);
+			try {
+				Thread.sleep(1000);
+			} catch(InterruptedException ex) { ex.printStackTrace(); }
 		}
 	}
 
