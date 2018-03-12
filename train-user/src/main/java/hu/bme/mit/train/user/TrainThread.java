@@ -16,7 +16,7 @@ public class TrainThread extends Thread {
 		while (this.running) {
 			controller.followSpeed();
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1500);
 			} catch(InterruptedException ex) {
 				ex.printStackTrace();
 			}
