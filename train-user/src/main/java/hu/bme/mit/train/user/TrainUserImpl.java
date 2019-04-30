@@ -1,5 +1,6 @@
 package hu.bme.mit.train.user;
 
+import java.util.*;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.user.TrainThread;
@@ -42,8 +43,14 @@ public class TrainUserImpl implements TrainUser {
 	@Override
 	public void overrideJoystickPosition(int joystickPosition) {
 		this.joystickPosition = joystickPosition;
-		System.out.println("The position of the joystick: " + this.joystickPosition);
-		controller.setJoystickPosition(joystickPosition);
+		for(int i=0;i<10++){
+			this.joystickPosition+=i;
+			System.out.println("The position of the joystick: " + this.joystickPosition);
+			controller.setJoystickPosition(joystickPosition);
+			try {
+				Thread.sleep(1000);
+			} catch(InterruptedException ex) { ex.printStackTrace(); }
+		}
 	}
 
 }
